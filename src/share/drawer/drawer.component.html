@@ -1,0 +1,26 @@
+<mat-sidenav-container class="app-drawer-container" fullscreen>
+  <mat-sidenav #sidenav mode="side" opened class="side-bar">
+    <mat-nav-list class="sidenav-list">
+      <a mat-list-item routerLink="/jobs">
+        <div class="center-nav-item">
+          <mat-icon>account_circle</mat-icon>
+          <span>Jobs</span>
+        </div>
+      </a>
+
+      <a mat-list-item routerLink="/login">
+        <div class="center-nav-item">
+          <mat-icon>input</mat-icon>
+          <span>Login</span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content class="main-wrapper">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

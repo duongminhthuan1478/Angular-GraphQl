@@ -1,0 +1,27 @@
+.app-drawer-container {
+  width: 100%;
+  display: flex;
+
+  .side-bar {
+    width: 250px;
+  }
+
+  .main-wrapper {
+    flex: 1;
+  }
+}
+
+.app-content {
+  width: 100%;
+}
+
+.sidenav-list span {
+  padding-left: 8px;
+}
+
+
+.center-nav-item {
+  display: flex;
+  align-items: center;
+}
+
