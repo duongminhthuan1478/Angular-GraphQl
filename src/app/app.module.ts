@@ -1,3 +1,4 @@
+import { OSMModule } from './osm/osm.module';
 import { HeaderComponent } from '../share/header/header.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,6 +51,7 @@ const uiModules = [
     BrowserAnimationsModule,
     NgbModule,
     ...uiModules,
+    OSMModule
   ],
   // exports: [
   //   ...uiModules
