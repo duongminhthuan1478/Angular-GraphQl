@@ -1,0 +1,32 @@
+.goal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.goal-item {
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  color: gray;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+
+
+  display: flex;
+  align-items: center;
+
+  .actions {
+    margin-left: auto;
+
+    .delete-btn {
+      margin-right: 1rem;
+    }
+  }
+}
+
+
+.action {
+  display: flex;
+  justify-content: right;
+}

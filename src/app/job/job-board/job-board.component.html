@@ -1,1 +1,31 @@
-<p>job-board works!</p>
+<div class="text-center text-primary p-3 mb-5">
+  <h2>Jobs Company</h2>
+  <p>What do you wanna do today?</p>
+</div>
+
+<div class="container">
+
+  <div class="action">
+    <button class="btn btn-lg btn-outline-primary" (click)="openModal()">Create</button>
+  </div>
+
+  <ul class="goal-list">
+    <li class="goal-item" *ngFor="let job of jobs" (click)="goToDetail(job.id)">
+      <div class="info">
+        {{job.title}} at {{job?.company?.name}}
+      </div>
+
+      <div class="actions">
+        <button mat-icon-button color="primary" class="delete-button" (click)="updateJob(job)">
+          <mat-icon>edit outline icon</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" class="delete-button" (click)="deleteJob(job.id)">
+          <mat-icon>delete outline icon</mat-icon>
+        </button>
+      </div>
+
+    </li>
+
+  </ul>
+</div>

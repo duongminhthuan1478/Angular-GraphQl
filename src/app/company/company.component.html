@@ -1,0 +1,15 @@
+<div class="container mt-3">
+  <div class="text-primary">
+    <h1>{{company.name}} </h1>
+  </div>
+
+  <p class="company-description"> {{company.description}}</p>
+
+
+  <h3>Job at {{company.name}}</h3>
+  <ul>
+    <li *ngFor="let item of company.jobs">
+      {{item.title}}
+    </li>
+  </ul>
+</div>

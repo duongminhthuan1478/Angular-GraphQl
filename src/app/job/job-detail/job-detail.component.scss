@@ -1,0 +1,17 @@
+.description {
+  background-color: #fff3cd;
+  border-color: #ffecb5;
+  height: 50px;
+  color: gray;
+  font-size: 24px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.company-name {
+  &:hover {
+    cursor: pointer;
+    color: crimson;
+  }
+}
