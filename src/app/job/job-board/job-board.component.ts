@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateJobComponent } from '../create-job/create-job.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-job-board',
@@ -20,6 +21,7 @@ export class JobBoardComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router
   ) { }
+
 
   ngOnInit(): void {
     this.getJobsData();
@@ -38,14 +40,15 @@ export class JobBoardComponent implements OnInit {
 
   updateJob(job: Job) {
     event?.stopPropagation();
-    console.log("job", job);
     this.openModal(job);
   }
 
   private getJobsData() {
     this._job.getJobs().subscribe(response => {
+      console.log("get-all-response", response);
+      if(response.loading) return;
       this.jobs = response.data.jobs as Job[];
-      console.log("jobs", this.jobs);
+    
     })
   }
 
@@ -66,13 +69,18 @@ export class JobBoardComponent implements OnInit {
         delete payload.__typename;
         this._job.updateJob(payload).subscribe(reuslt => {
           console.log("update ok");
-          this.getJobsData();
         });
         return;
       }
-      payload = { ...data, companyId: "fake-company-id" };
+
+      const userLoggedFake = environment.userLoggedFake;
+      payload = { ...data, companyId: userLoggedFake.companyId };
+      delete payload.id;
+      delete payload.company;
       this._job.createJob(payload).subscribe(reuslt => {
         console.log("create ok");
+        // we can using write query to cache again if don't want to reload
+        // https://the-guild.dev/graphql/apollo-angular/docs/caching/interaction
         this.getJobsData();
       });
     });

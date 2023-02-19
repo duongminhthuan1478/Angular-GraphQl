@@ -9,22 +9,23 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     link: httpLink.create({uri}),
     cache: new InMemoryCache(),
     // Remove cache data, if cache data exist in memory. In case delete item -> get old data from memory => it's not work properly even though the record actually reduce 1
-    defaultOptions: {
-      watchQuery: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'ignore',
-      },
-      query: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'all',
-      },
-    }
+    // defaultOptions: {
+    //   watchQuery: {
+    //     fetchPolicy: 'no-cache',
+    //     errorPolicy: 'ignore',
+    //   },
+    //   query: {
+    //     fetchPolicy: 'no-cache',
+    //     errorPolicy: 'all',
+    //   },
+    // }
   };
 }
 
 @NgModule({
   exports: [ApolloModule],
   providers: [
+   
     {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,

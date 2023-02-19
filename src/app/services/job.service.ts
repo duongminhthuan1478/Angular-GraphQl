@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApolloQueryResult } from '@apollo/client/core';
 import { Apollo, gql } from 'apollo-angular';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { CreateJob, Job, JobQuery, UpdateJob } from './../models/job';
 
 @Injectable({
@@ -14,20 +14,22 @@ export class JobService {
   }
 
   getJobs(): Observable<ApolloQueryResult<JobQuery>> {
-    return this.apollo.watchQuery<JobQuery>({
-      query: gql`
-        query {
-          jobs {
-            company {
-              id
-              name
-            }
-            description
+    const query = gql`
+      query Jobs{
+        jobs {
+          company {
             id
-            title
+            name
           }
+          description
+          id
+          title
         }
-      `,
+      }
+    `;
+    return this.apollo.watchQuery<JobQuery>({
+      query: query,
+      fetchPolicy: 'cache-and-network'
     }).valueChanges;
   };
 
